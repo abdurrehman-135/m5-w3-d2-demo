@@ -1,26 +1,33 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-function CreateList(props) {
+function UpdateList(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleCreate = () => {
-    props.createList();
+  const handleShow = () => {
+    setShow(true);
+    props.loadList(props.elementId);
+  };
+
+  const handleUpdate = () => {
+    props.updateList(props.elementId);
     handleClose();
   };
 
   return (
     <React.Fragment>
       <Button variant="primary" onClick={handleShow}>
-        Create List
+        Update
       </Button>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>New List</Modal.Title>
+          <Modal.Title>Update List</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
+          <label>Title</label>
           <input
             type="text"
             placeholder="Title"
@@ -30,6 +37,7 @@ function CreateList(props) {
             className="d-block my-3"
           />
 
+          <label>Author</label>
           <input
             type="text"
             placeholder="Author"
@@ -39,12 +47,13 @@ function CreateList(props) {
             className="d-block my-3"
           />
         </Modal.Body>
+
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleCreate}>
-            Create
+          <Button variant="primary" onClick={handleUpdate}>
+            Update
           </Button>
         </Modal.Footer>
       </Modal>
@@ -52,4 +61,4 @@ function CreateList(props) {
   );
 }
 
-export default CreateList;
+export default UpdateList;
