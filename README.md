@@ -35,3 +35,12 @@ npm run dev
 - Frontend: `http://localhost:3000`
 - Backend: `http://localhost:5000`
 
+
+
+# Outputs
+
+![1.png](devimages/1.png)
+
+![1.png](devimages/2.png)
+
+![1.png](devimages/3.png)
