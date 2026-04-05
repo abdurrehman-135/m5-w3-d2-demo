@@ -1,8 +1,24 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
 
-test('renders learn react link', () => {
+import App from "./App";
+
+beforeEach(() => {
+  global.fetch = jest.fn().mockResolvedValue({
+    ok: true,
+    status: 200,
+    headers: {
+      get: () => "application/json",
+    },
+    json: async () => [],
+  });
+});
+
+afterEach(() => {
+  jest.resetAllMocks();
+});
+
+test("renders the book list page", async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(await screen.findByRole("heading", { name: /book list/i })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: /add book/i })).toBeInTheDocument();
 });

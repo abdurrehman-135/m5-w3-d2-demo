@@ -1,0 +1,15 @@
+{
+  "name": "m5-w3-d2-demo",
+  "private": true,
+  "scripts": {
+    "frontend": "npm start --prefix crud-json-server",
+    "backend": "npm run dev --prefix backend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build": "npm run build --prefix crud-json-server",
+    "test": "npm test --prefix crud-json-server -- --watchAll=false",
+    "seed": "npm run seed --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
